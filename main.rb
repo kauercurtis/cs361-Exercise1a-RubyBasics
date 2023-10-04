@@ -1,23 +1,24 @@
-=begins
+=begin
 Name: Curtis Kauer
-Exercise 1a: Player class
+Exercise 1a: Player class and Player instance array
 =end
 
-=begins
+=begin
 Player - player class
-attribute1 - name - the name of the instance
-attribute2 - score - the score of the instance
+attribute1 - name - the name of the Player instance
+attribute2 - score - the score of the Player instance
 =end
+
 class Player
 
-    attr_accessor :name
-    attr_accessor :score
+    attr_reader :name
+    attr_reader :score
 
-    #initializePlayer - initializes the member attributes of a Player instance
+    #initialize - constructor - initializes the member variables of a Player instance
     #param1 - name - the name of the player 
     #param2 - score - the score of the player
     #return - nothing
-    def initializePlayer(name, score)
+    def initialize(name, score)
 
         @name = name;
         @score = score;
@@ -26,60 +27,45 @@ class Player
 
 end
 
-=begins
+=begin
 generatePlayerName - returns a generic player name with the format 'Player #'
 param1 - number - the #
 return - a string literal of the player name 
 =end
+
 def generatePlayerName(number)
 
     return "Player #{number}";
 
 end
 
-=begins
+=begin
 generateRandomScore - returns a random integer between 10 and 300
 return - returns a random integer between 10 and 300
 =end
+
 def generateRandomScore()
 
     return Random.new().rand(10..300);
 
 end
 
-=begins
-outputPlayer - displays the attributes in a given player instance 
-param1 - player - the player whose attributes to display
-return - nothing
-=end
-def outputPlayer(player)
+#Initialize array
+#Fill array with initialized Player instances
+#Ouput Player instance variables 
+players = [];
+
+50.times do |i|
+
+    players << Player.new(generatePlayerName(i + 1), generateRandomScore);
+
+end
+
+players.each do |player|
 
     puts "Ready #{player.name}! Score: #{player.score}\n";
 
 end
-
-
-numberOfPlayers = 50;
-
-players = [numberOfPlayers];
-
-counter = 0;
-
-#creates new player instance
-#initializes the player instance
-#pushes instance of player in array (numberOfPlayers)
-#outputs the player
-while counter < numberOfPlayers
-
-    player = Player.new();
-    player.initializePlayer(generatePlayerName(counter + 1), generateRandomScore());
-
-    players.push(player);
-
-    outputPlayer(player);
-
-    counter += 1;
-end   
 
 
 
