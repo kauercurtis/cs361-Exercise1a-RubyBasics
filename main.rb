@@ -27,29 +27,6 @@ class Player
 
 end
 
-=begin
-generatePlayerName - returns a generic player name with the format 'Player #'
-param1 - number - the #
-return - a string literal of the player name 
-=end
-
-def generatePlayerName(number)
-
-    return "Player #{number}";
-
-end
-
-=begin
-generateRandomScore - returns a random integer between 10 and 300
-return - returns a random integer between 10 and 300
-=end
-
-def generateRandomScore()
-
-    return Random.new().rand(10..300);
-
-end
-
 #Initialize array
 #Fill array with initialized Player instances
 #Ouput Player instance variables 
@@ -57,7 +34,7 @@ players = [];
 
 50.times do |i|
 
-    players << Player.new(generatePlayerName(i + 1), generateRandomScore);
+    players << Player.new("Player #{i + 1}", Random.new().rand(0..300));
 
 end
 
